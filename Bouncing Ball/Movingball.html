@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounce</title>
+    <style>
+        canvas{
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 15px 370px;
+        }
+        header{
+            text-align: center;
+            font-size: 44px;
+            margin: 10px 370px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body{
+            background-color: rgb(240, 208, 104);
+        }
+    </style>
+</head>
+
+<body>
+    <header id="insta">Bounce</header>
+    <canvas id="gamecanvas" width="800" height = "600"></canvas>
+    <script>
+
+        //  Variables
+        const FPS= 25;
+        var bs=30;
+        var bx,by ;
+        var xv,yv;
+        var canvas ,context;
+
+        canvas=document.getElementById("gamecanvas");
+        context=canvas.getContext("2d");
+        
+        // Decides the time interval to call the function
+
+        setInterval(update,1000/FPS);
+
+        bx = canvas.width / 2;
+        by = canvas.height / 2;
+
+        xv = Math.floor(Math.random() * 76 + 25) / FPS;
+        yv = Math.floor(Math.random() * 76 + 25) / FPS;
+
+        // Coin toss chooses the initial orientation of the ball after every refresh 
+        
+        if (Math.floor(Math.random() * 2) == 0) {
+            xv = -xv;
+        }
+        if (Math.floor(Math.random() * 2) == 0) {
+            yv = -yv;
+        }
+
+        // Game loop functions calls every second/FPS seconds and update the position of the ball 
+
+        function update()
+        {
+            bx+=xv;
+            by+=yv;
+            if (bx - bs / 2 < 0 && xv < 0) {
+                xv = -xv;
+            }
+            if (bx + bs / 2 > canvas.width && xv > 0) {
+                xv = -xv;
+            }
+            if (by - bs / 2 < 0 && yv < 0) {
+                yv = -yv;
+            }
+            if (by + bs / 2 > canvas.height && yv > 0) {
+                yv = -yv;
+            }
+
+            // Desiging part
+
+            context.fillStyle = "black";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = "yellow";
+            context.fillRect(bx - bs / 2, by - bs / 2, bs, bs);
+        }
+
+        //  Instagram link on clicking the title
+
+        var button = document.getElementById("insta");
+        button.addEventListener('click',()=>{
+            window.open("https://www.instagram.com/rugv_d/");
+        })
+
+        //   **** END ****
+        
+    </script>
+</body>
+</html>
