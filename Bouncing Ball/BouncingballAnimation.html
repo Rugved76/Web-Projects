@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounce</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        canvas{
+            background: #ff8;
+        }
+        body{
+            background: rgb(235, 224, 224);
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="sandbox"></canvas>
+    <audio src="sfx-pop.mp3" id="pop"></audio>
+</body>
+<script>
+    const canvas = document.getElementById('sandbox');
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+    const ctx = canvas.getContext('2d');
+
+    function Circle(x,y,r,c)
+    {
+        this.x=x;
+        this.y=y;
+        this.r=r;
+        this.c=c;
+
+        this.dx=Math.floor(Math.random()*4)+1;
+        this.dx*=Math.random()>0.5?1:-1;
+        this.dy=Math.floor(Math.random()*4)+1;
+        this.dy*=Math.random()>0.5?1:-1;
+        
+        this.draw=function(){
+            ctx.beginPath();
+            ctx.fillStyle=this.c;
+            ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+            ctx.fill();
+        }
+
+        this.animate=function(){
+            this.x+=this.dx;
+            this.y+=this.dy;
+
+            if(this.x+this.r>canvas.width || this.x-this.r<0)
+            {
+                this.dx = -this.dx;
+            }
+            if (this.y + this.r > canvas.height || this.y - this.r < 0) {
+                this.dy = -this.dy;
+            }
+            this.draw();
+        }
+    }
+
+    const balls=[];
+    for(let i=0; i<20; i++){
+        let r= Math.floor(Math.random()*30)+15;
+        let x=Math.random()*(canvas.width-r*2)+r;
+        let y=Math.random()*(canvas.height-r*2)+r;
+        let c = 'red';
+        balls.push(new Circle(x,y,r,c));
+    }
+
+    let aud = document.getElementById('pop');
+
+
+
+    canvas.addEventListener('click',(e)=>{
+        let r = Math.floor(Math.random()*30)+15;
+        balls.push(new Circle(e.clientX,e.clientY,r,'blue'));
+        aud.play();
+    });
+    
+    function Update(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(let i=0; i<balls.length; i++)
+        {
+            let ball = balls[i];
+            ball.animate();
+        }
+        requestAnimationFrame(Update);
+    }
+    
+Update();
+
+</script>
+</html>
