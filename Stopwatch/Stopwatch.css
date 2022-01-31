@@ -5,6 +5,23 @@
     --light: #F3F4F6;
 }
 
+header{
+    background-color: var(--darkdark);
+    height: 10vh;
+    text-align: center;
+    padding: 9px;
+    box-shadow: 5px 6px 5px var(--primary);
+    user-select: none;
+}
+
+header h1{
+    font-size: 45px;
+    color: #FFF;
+    font-size: 62px;
+    text-transform: uppercase;
+    text-shadow: -4px 1px var(--primary);
+}
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -33,6 +50,7 @@ body{
     font-size: 5rem;
     font-weight: 300;
     margin-bottom: 1rem;
+    user-select: none;
 }
 
 .controls{
