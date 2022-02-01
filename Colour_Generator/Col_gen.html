@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colour Generator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #FF5858;
+        }
+
+        .colour{
+            color: #FFF;
+            font-size: 72px;
+            margin-bottom: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .generate{
+            appearance: none;
+            background: none;
+            outline: none;
+            border: 5px solid #FFF;
+            padding: 1rem 2rem;
+            font-size: 2rem;
+            color: #FFF;
+            font-weight: 700;
+            background-image: linear-gradient(to bottom,transparent 50%,#4adef1 50%);
+            background-size: 100% 200%;
+            transition: 0.6s ease-out;
+            cursor: pointer;
+        }
+
+        .generate:hover{
+            background-position: 0 100%;
+            box-shadow: inset 4px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h2 class="colour">#FF5858</h2>
+    <button class="generate">GENERATE</button>
+</body>
+<script>
+    const button = document.querySelector('.generate');
+    const colour = document.querySelector('.colour');
+
+    button.addEventListener('click',setcolour);
+    colour.addEventListener('click',copy);
+
+    function setcolour(){
+        let randomcolour = '#'+Math.floor(Math.random()*16777215).toString(16);
+
+        document.body.style.backgroundColor=randomcolour;
+        colour.innerText=randomcolour;
+    }
+
+    function copy(){
+        let text = colour.innerText;
+        let input = document.createElement('input');
+        input.setAttribute('value',text);
+        input.select();
+
+        document.execCommand('copy');
+        document.body.removeChild(input);
+
+        alert('Copied'+text);
+    }
+</script>
+</html>
