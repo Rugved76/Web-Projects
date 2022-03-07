@@ -1,3 +1,3 @@
-# Web-Projects
+## Web-Projects
 
-Web development projects including javascript, css and html
+Web development frontend mini projects including javascript, css and html
