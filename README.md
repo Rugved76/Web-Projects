@@ -1,3 +1,3 @@
 ## Web-Projects
 
-Web development frontend mini projects including javascript, css and html
+Basic web development frontend mini projects including javascript, React JS, HTML and CSS
