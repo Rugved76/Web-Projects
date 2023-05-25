@@ -1,0 +1,11 @@
+Create react app 
+npx create-react-react-app myapp
+
+Run react app
+npm start
+
+To load package json
+npm init
+
+To install express js
+npx inst
