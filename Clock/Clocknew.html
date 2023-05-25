@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="clocknew.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://thumbs.dreamstime.com/b/digital-clock-shows-seven-o-morning-isolated-black-background-34974491.jpg" alt="">
+            </div>
+            <ul>
+                <li><a>Home</a></li>
+                <li><a id="aboutme">About</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+            
+            <!-- <div class="searchbox">
+                <input type="text" name="Search" placeholder="Search"id="">
+                <button class ="bbttnn">Search</button>
+            </div> -->
+        </nav>
+
+    </header>
+    <div class="loadbar">
+    </div>
+    <div class="container">
+        
+        <span id="time">
+            
+        </span>
+    <script>
+    let a;
+    let date;
+    let time;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    setInterval(() => {
+        a = new Date(); 
+        date = a.toLocaleDateString(undefined, options);
+        time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+        document.getElementById('time').innerHTML = time + "<br>   " + date;
+    }, 1000);
+    
+    </script>
+
+    
+    </div>
+    <footer>
+        <p>
+            Created By : Rugved Wagh
+        </p>
+    </footer>
+    
+</body>
+    <script>
+        let insta = document.getElementById('aboutme');
+        insta.addEventListener('click',()=>{
+            window.open("https://www.instagram.com/rugv_d/");
+        })
+    </script>
+</html>

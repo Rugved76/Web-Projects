@@ -1,0 +1,120 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: rgb(0, 0, 0);
+    font-family: 'Lato', sans-serif;
+    /* background-attachment: fixed; */
+}
+footer{
+    background: rgb(0, 0, 0);
+    color: white;
+    display:flex;
+    flex-direction: column;
+    height: 12vh;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Lato', sans-serif;
+}
+
+nav{
+    display: flex;
+    background-attachment: scroll;
+}
+
+nav ul{
+    display: flex;
+    height: 58px;
+    justify-content: flex-start;
+    align-items: center;
+}
+nav ul li a{
+    color: white;
+    list-style-type: none;
+}
+body{
+    background: black;
+}
+nav ul li{
+    padding: 23px;
+}
+.logo :hover{
+    transform: rotate(0.5turn);
+    width: 85px 51px;
+    /* animation: logo_ 0.75s ease-in 0.25s 1; */
+}
+nav ul li a:hover{
+    /* font-weight : bolder; */
+    color: red;
+    cursor: pointer;
+}
+
+#time{
+    font-size:55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container p{
+    padding: 0 23px 69px 23px;
+    cursor: pointer;
+}
+
+.container{
+    min-height: calc(100vh - 58px - 12vh);
+    font-size:55px;
+    /* background: rgb(143, 241, 125); */
+    background-image: url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80");
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: 85vw 81vh;
+    /* margin: 0px auto 0 auto; */
+    margin: 0px 20px 0px 100px;
+    align-items: center;
+    color: rgb(255, 255, 255)
+}
+
+.loadbar{
+    background-color: rgb(0, 0, 0);
+    height: 4px;
+    animation: loadingbar 1s ease-in 0.5s 1;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{ 
+    width: 79px;
+    height: 45px;
+    padding: 0 21px;
+    animation: logo_ 0.75s ease-in 0.25s 1;
+} 
+@keyframes logo_ {
+    50%{
+        width: 80px;
+        transform: rotateY(35deg);
+    }
+    100%{
+        width: 100px
+    }
+
+}
+@keyframes loadingbar {
+    0%{
+        width: 4vw;
+        background-color: red;
+    }
+    50%{
+        width: 90vw;
+        background-color: red;
+    }
+    100%{
+        width: 100vw;
+        background-color: red;
+    }
+}
