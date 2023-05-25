@@ -1,0 +1,16 @@
+*Push 
+
+git add filename
+git commit -m "messge"
+git push origin master
+
+*Delete file/folder
+
+git rm -r --cached foldername
+git commit -m "messge"
+git push origin master
+
+*Settings to default
+
+git config --global --unset-all
+git config --system --unset-all
