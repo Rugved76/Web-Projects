@@ -43,7 +43,7 @@ app.post('/signup', async (req, res) => {
         mydat.save().then(item=>{
             res.status(201).render("home", { naming: `Welcome ${req.body.name} ` })
         }).catch(e=>{
-            res.send("error1111111")
+            res.send("Error : ",e)
         })
         //******** */
         // await LogInCollection.insertMany([data])
