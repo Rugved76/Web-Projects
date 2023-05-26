@@ -41,7 +41,7 @@ app.post('/signup', async (req, res) => {
         }
         var mydat = new LogInCollection(req.body)
         mydat.save().then(item=>{
-            res.status(201).render("home", { naming: `Welcome ${req.body.password}, ` })
+            res.status(201).render("home", { naming: `Welcome ${req.body.name} ` })
         }).catch(e=>{
             res.send("error1111111")
         })
@@ -59,7 +59,7 @@ app.post('/login', async (req, res) => {
         const check = await LogInCollection.findOne({ name: req.body.name })
 
         if (check.password === req.body.password) {
-            res.status(201).render("home", { naming: `Welcome ${req.body.password}, ` })
+            res.status(201).render("home", { naming: `Welcome ${req.body.name} ` })
         }
 
         else {
